@@ -1,0 +1,27 @@
+{
+  "name": "irisit/lmod-authz",
+  "description": "Auth & Autorization system",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "monkeyC",
+      "email": "acorbel@irisit.fr"
+    },
+    {
+      "name": "ci_trex",
+      "email": "amangin@irisit.fr"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "laracasts/flash": "^3.0",
+    "laravelcollective/html": "^5.4.0",
+    "league/climate": "^3.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Irisit\\Authz\\": "src/"
+    }
+  }
+}
