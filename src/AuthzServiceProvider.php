@@ -28,7 +28,7 @@ class AuthzServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'authz');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views/' . config('irisit_authz.base_theme'), 'authz');
 
         $this->loadRoutesFrom(__DIR__ . '/routes.php');
     }

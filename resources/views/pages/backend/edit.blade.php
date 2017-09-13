@@ -14,7 +14,7 @@
                 <li class="uk-open">
                     <h3 class="uk-accordion-title">{{__('Account informations')}}</h3>
                     <div class="uk-accordion-content">
-                        @include('authz::backend.forms.user')
+                        @include('authz::uikit.backend.forms.user')
                     </div>
                 </li>
                 <li class="uk-open">

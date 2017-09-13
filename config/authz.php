@@ -26,4 +26,15 @@ return [
 
     'redirect_unauthenticated' => 'authz.get_login',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Base Theme
+    |--------------------------------------------------------------------------
+    |
+    | This option for choosing the theme ( uikit / pages / .. )
+    |
+    */
+
+    'base_theme' => 'uikit',
+
 ];
