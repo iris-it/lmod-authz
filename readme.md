@@ -124,3 +124,6 @@ Add to config/filesystem.php
             'root' => base_path() . DIRECTORY_SEPARATOR,
         ],
 ```
+
+
+And run `php artisan vendor:publish --provider="Irisit\Authz\AuthzServiceProvider"` to get the configuration file
