@@ -2,35 +2,26 @@
 
 @section('content')
 
-    <div class="uk-margin-top">
+    <h1>{{__('Send reset password email')}}</h1>
 
-        <div class="uk-container uk-container-small uk-position-relative">
+    {!! Form::open(['route' => 'authz.post_forgot_password', 'method' => 'POST', 'class'=> 'p-t-15']) !!}
 
-            <div class="uk-h1">
-                {{__('Send reset password email')}}
+    <div>
+        <div class="form-group form-group-default {{(!$errors->has('email') ?: 'has-error')}}">
+            {!! Form::label('email', __('Email')) !!}
+            <div class="controls">
+                {!! Form::email('email', null, ['placeholder' => __('Email'), 'class' =>($errors->has('email') ? 'form-control error' : 'form-control')]) !!}
             </div>
-
-            {!! Form::open(['route' => 'authz.post_forgot_password', 'method' => 'POST', 'class'=> 'uk-form-stacked']) !!}
-
-            <div class="uk-margin">
-
-                {!! Form::label('email', __('Email'), ['class' => 'uk-form-label']) !!}
-
-                <div class="uk-form-controls">
-                    {!! Form::email('email', null, ['class' =>($errors->has('email') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
-                </div>
-
-                @if ($errors->has('email'))
-                    <div class="uk-text-danger">{{ $errors->first('email') }}</div>
-                @endif
-
-            </div>
-
-            {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary', 'name' => 'submit-send-password']) !!}
-
-            {!! Form::close() !!}
-
         </div>
-
+        @if ($errors->has('email'))
+            <label id="email-error" class="error" for="email">
+                {{ $errors->first('email') }}
+            </label>
+        @endif
     </div>
+
+    {!! Form::submit(__('Submit'), ['class' => 'btn btn-primary btn-cons m-t-10', 'name' => 'submit-send-password']) !!}
+
+    {!! Form::close() !!}
+
 @endsection

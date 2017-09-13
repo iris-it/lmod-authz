@@ -2,59 +2,53 @@
 
 @section('content')
 
-    <div class="uk-margin-top">
+    <h1>{{__('Login')}}</h1>
 
-        <div class="uk-container uk-container-small uk-position-relative">
+    {!! Form::open(['route' => 'authz.post_login', 'method' => 'POST', 'class'=> 'p-t-15']) !!}
 
-            <div class="uk-h1">
-                {{__('Login')}}
+    <div>
+        <div class="form-group form-group-default {{(!$errors->has('email') ?: 'has-error')}}">
+            {!! Form::label('email', __('Email')) !!}
+            <div class="controls">
+                {!! Form::email('email', null, ['placeholder' => __('Email'), 'class' =>($errors->has('email') ? 'form-control error' : 'form-control')]) !!}
             </div>
-
-            {!! Form::open(['route' => 'authz.post_login', 'method' => 'POST', 'class'=> 'uk-form-stacked']) !!}
-
-            <div class="uk-margin">
-
-                {!! Form::label('email', __('Email'), ['class' => 'uk-form-label']) !!}
-
-                <div class="uk-form-controls">
-                    {!! Form::email('email', null, ['class' =>($errors->has('email') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
-                </div>
-
-                @if ($errors->has('email'))
-                    <div class="uk-text-danger">{{ $errors->first('email') }}</div>
-                @endif
-
-            </div>
-
-
-            <div class="uk-margin">
-
-                {!! Form::label('password', __('Password'), ['class' => 'uk-form-label']) !!}
-
-                <div class="uk-form-controls">
-                    {!! Form::password('password', ['class' =>($errors->has('password') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
-                </div>
-
-                @if ($errors->has('password'))
-                    <div class="uk-text-danger">{{ $errors->first('password') }}</div>
-                @endif
-
-            </div>
-
-            <div class="uk-margin">
-                <label>
-                    {!! Form::checkbox('remember', null, null, ['class' => 'uk-checkbox']) !!}
-                    {{ __('Remember me ?') }}
-                </label>
-            </div>
-
-            {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary', 'name' => 'submit-login']) !!}
-
-            <a class="uk-align-right@m" href="{{route('authz.get_forgot_password')}}">{{ __('Forgot password ?') }}</a>
-
-            {!! Form::close() !!}
-
         </div>
-
+        @if ($errors->has('email'))
+            <label id="email-error" class="error" for="email">
+                {{ $errors->first('email') }}
+            </label>
+        @endif
     </div>
+
+    <div>
+        <div class="form-group form-group-default {{(!$errors->has('email') ?: 'has-error')}}">
+            {!! Form::label('password', __('Password')) !!}
+            <div class="controls">
+                {!! Form::password('password', ['placeholder' => __('Password'), 'class' =>($errors->has('password') ? 'form-control error' : 'form-control')]) !!}
+            </div>
+        </div>
+        @if ($errors->has('password'))
+            <label id="password-error" class="error" for="password">
+                {{ $errors->first('password') }}
+            </label>
+        @endif
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 no-padding sm-p-l-10">
+            <div class="checkbox">
+                {!! Form::checkbox('remember', null, null) !!}
+                <label for="checkbox1">{{ __('Remember me ?') }}</label>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-end">
+            <a href="{{route('authz.get_forgot_password')}}" class="text-info small">{{ __('Forgot password ?') }}</a>
+        </div>
+    </div>
+
+    {!! Form::submit(__('Submit'), ['class' => 'btn btn-primary btn-cons m-t-10', 'name' => 'submit-login']) !!}
+
+    {!! Form::close() !!}
+
 @endsection
