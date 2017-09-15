@@ -2,28 +2,18 @@
 
 @section('content')
 
-    <div class="uk-margin-top">
+    <h1>{{__('Delete user')}}</h1>
 
-        <div class="uk-container uk-container-small uk-position-relative">
+    {!! Form::model($user, ['route' => ['authz.admin_destroy_users', $user->id], 'method' => 'DELETE', 'class'=> 'p-t-15']) !!}
 
-            <div class="uk-h1">
-                {{__('Delete user')}}
-            </div>
+    {{__('Are you sure to delete')}} <b>{{$user->firstname}} {{$user->lastname}}</b> ?
 
-            {!! Form::model($user, ['route' => ['authz.admin_destroy_users', $user->id], 'method' => 'DELETE', 'class'=> 'uk-form-stacked']) !!}
+    <hr>
 
-            {{__('Are you sure to delete')}} {{$user->firstname}} {{$user->lastname}}
+    <a href="{{route('authz.admin_index_users')}}" class="btn btn-primary btn-cons pull-left">{{__('Go back')}}</a>
 
-            <hr>
+    {!! Form::submit(__('Delete user'), ['class' => 'btn btn-danger btn-cons pull-right']) !!}
 
-            <a href="{{route('authz.admin_index_users')}}" class="uk-button uk-button-primary">{{__('Go back')}}</a>
-
-            {!! Form::submit(__('Delete user'), ['class' => 'uk-button uk-button-primary uk-align-right']) !!}
-
-            {!! Form::close() !!}
-
-        </div>
-
-    </div>
+    {!! Form::close() !!}
 
 @endsection

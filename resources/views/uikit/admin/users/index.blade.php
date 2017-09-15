@@ -47,7 +47,7 @@
                 </tbody>
             </table>
 
-            {!! $users->links('vendor.pagination.uikit')  !!}
+            {!! $users->links('authz::partials.pagination')  !!}
 
         </div>
 

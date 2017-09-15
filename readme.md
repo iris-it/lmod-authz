@@ -125,5 +125,21 @@ Add to config/filesystem.php
         ],
 ```
 
+Add this to app/Exceptions/Handler.php
+```php
+/**
+ * @override
+ * @param \Illuminate\Http\Request $request
+ * @param AuthenticationException $exception
+ * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+ */
+protected function unauthenticated($request, AuthenticationException $exception)
+{
+    return $request->expectsJson()
+        ? response()->json(['message' => 'Unauthenticated.'], 401)
+        : redirect()->guest(route('authz.get_login'));
+}
+```
+
 
 And run `php artisan vendor:publish --provider="Irisit\Authz\AuthzServiceProvider"` to get the configuration file

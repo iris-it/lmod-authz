@@ -2,55 +2,56 @@
 
 @section('content')
 
-    <div class="uk-margin-top">
+    <h1>{{__('Users')}}</h1>
 
-        <div class="uk-container uk-container-small uk-position-relative">
+    <a href="{{route('authz.admin_create_users')}}">
+        {{__('Create user')}} <i class="fa fa-plus-circle"></i>
+    </a>
 
-            <div class="uk-h1">
-                {{__('Users')}} <a href="{{route('authz.admin_create_users')}}" uk-icon="icon: plus-circle"></a>
-            </div>
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <th>{{__('Id')}}</th>
+            <th>{{__('Firstname')}}</th>
+            <th>{{__('Lastname')}}</th>
+            <th>{{__('Email')}}</th>
+            <th>{{__('Role')}}</th>
+            <th>{{__('Updated')}}</th>
+            <th>{{__('Actions')}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($users as $user)
+            <tr>
+                <td>{{$user->id}}</td>
+                <td>{{$user->firstname}}</td>
+                <td>{{$user->lastname}}</td>
+                <td>{{$user->email}}</td>
+                <td>
+                    @include('authz::partials.roles_pills', ['role' => $user->role])
+                </td>
+                <td>{{$user->updated_at->diffForHumans()}}</td>
+                <td>
+                    <div class="btn-group">
+                        @can('permission::admin-edit_users')
+                            <a href="{{route('authz.admin_edit_users', $user->id)}}" class="btn btn-default">
+                                {{__('Edit user')}} <i class="fa fa-pencil"></i>
+                            </a>
+                        @endcan
+                        @can('permission::admin-destroy_users')
+                            <a href="{{route('authz.admin_delete_users', $user->id)}}" class="btn btn-default">
+                                {{__('Delete user')}} <i class="fa fa-trash"></i>
+                            </a>
+                        @endcan
+                    </div>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 
-            <table class="uk-table uk-table-striped">
-                <thead>
-                <tr>
-                    <th>{{__('Id')}}</th>
-                    <th>{{__('Firstname')}}</th>
-                    <th>{{__('Lastname')}}</th>
-                    <th>{{__('Email')}}</th>
-                    <th>{{__('Role')}}</th>
-                    <th>{{__('Updated')}}</th>
-                    <th>{{__('Actions')}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($users as $user)
-                    <tr>
-                        <td>{{$user->id}}</td>
-                        <td>{{$user->firstname}}</td>
-                        <td>{{$user->lastname}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>
-                            @include('authz::partials.roles_pills', ['role' => $user->role])
-                        </td>
-                        <td>{{$user->updated_at->diffForHumans()}}</td>
-                        <td>
-                            @can('permission::admin-edit_users')
-                                <a href="{{route('authz.admin_edit_users', $user->id)}}" uk-icon="icon: pencil"></a>
-                            @endcan
-
-                            @can('permission::admin-destroy_users')
-                                <a href="{{route('authz.admin_delete_users', $user->id)}}" uk-icon="icon: trash"></a>
-                            @endcan
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-
-            {!! $users->links('vendor.pagination.uikit')  !!}
-
-        </div>
-
+    <div class="m-t-10">
+        {!! $users->links('authz::partials.pagination') !!}
     </div>
 
 @endsection

@@ -1,59 +1,66 @@
-<div class="uk-margin">
-
-    {!! Form::label('firstname', __('Firstname'), ['class' => 'uk-form-label']) !!}
-
-    <div class="uk-form-controls">
-        {!! Form::text('firstname', null, ['class' =>($errors->has('firstname') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
+<div>
+    <div class="form-group form-group-default {{(!$errors->has('firstname') ?: 'has-error')}}">
+        {!! Form::label('firstname', __('Firstname')) !!}
+        <div class="controls">
+            {!! Form::text('firstname', null, ['placeholder' => __('Firstname'), 'class' =>($errors->has('firstname') ? 'form-control error' : 'form-control')]) !!}
+        </div>
     </div>
-
     @if ($errors->has('firstname'))
-        <div class="uk-text-danger">{{ $errors->first('firstname') }}</div>
+        <label id="firstname-error" class="error" for="firstname">
+            {{ $errors->first('firstname') }}
+        </label>
     @endif
-
 </div>
 
-<div class="uk-margin">
-
-    {!! Form::label('lastname', __('Lastname'), ['class' => 'uk-form-label']) !!}
-
-    <div class="uk-form-controls">
-        {!! Form::text('lastname', null, ['class' =>($errors->has('lastname') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
+<div>
+    <div class="form-group form-group-default {{(!$errors->has('lastname') ?: 'has-error')}}">
+        {!! Form::label('lastname', __('Lastname')) !!}
+        <div class="controls">
+            {!! Form::text('lastname', null, ['placeholder' => __('Lastname'), 'class' =>($errors->has('lastname') ? 'form-control error' : 'form-control')]) !!}
+        </div>
     </div>
-
     @if ($errors->has('lastname'))
-        <div class="uk-text-danger">{{ $errors->first('lastname') }}</div>
+        <label id="lastname-error" class="error" for="lastname">
+            {{ $errors->first('lastname') }}
+        </label>
     @endif
-
 </div>
 
-<div class="uk-margin">
-
-    {!! Form::label('email', __('Email'), ['class' => 'uk-form-label']) !!}
-
-    <div class="uk-form-controls">
-        {!! Form::email('email', null, ['class' =>($errors->has('email') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
+<div>
+    <div class="form-group form-group-default {{(!$errors->has('email') ?: 'has-error')}}">
+        {!! Form::label('email', __('Email')) !!}
+        <div class="controls">
+            {!! Form::email('email', null, ['placeholder' => __('Email'), 'class' =>($errors->has('email') ? 'form-control error' : 'form-control')]) !!}
+        </div>
     </div>
-
     @if ($errors->has('email'))
-        <div class="uk-text-danger">{{ $errors->first('email') }}</div>
+        <label id="email-error" class="error" for="email">
+            {{ $errors->first('email') }}
+        </label>
     @endif
-
 </div>
 
-<div class="uk-margin">
-
-    {!! Form::label('role', __('Role'), ['class' => 'uk-form-label']) !!}
-
-    <div class="uk-form-controls">
-        {!! Form::select('role_id', $roles, null,['class' => 'uk-input']) !!}
+<div>
+    <div class="form-group form-group-default {{(!$errors->has('role_id') ?: 'has-error')}}">
+        {!! Form::label('role_id', __('Role')) !!}
+        <div class="controls">
+            {!! Form::select('role_id', $roles, null,['class' => 'full-width', 'data-init-plugin' => 'select2']) !!}
+        </div>
     </div>
-
     @if ($errors->has('role_id'))
-        <div class="uk-text-danger">{{ $errors->first('role_id') }}</div>
+        <label id="role_id-error" class="error" for="role_id">
+            {{ $errors->first('role_id') }}
+        </label>
     @endif
-
 </div>
 
-<a href="{{route('authz.admin_index_users')}}" class="uk-button uk-button-primary">{{__('Go back')}}</a>
-
-{!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary uk-align-right']) !!}
+<div class="row m-t-15">
+    <div class="col-md-6">
+        <a href="{{route('authz.admin_index_users')}}" class="btn btn-primary btn-cons pull-left">
+            {{__('Go back')}}
+        </a>
+    </div>
+    <div class="col-md-6">
+        {!! Form::submit(__('Submit'), ['class' => 'btn btn-primary btn-cons pull-right']) !!}
+    </div>
+</div>

@@ -60,7 +60,7 @@
                 </tbody>
             </table>
 
-            {!! $permissions->links('vendor.pagination.uikit')  !!}
+            {!! $permissions->links('authz::partials.pagination')  !!}
 
         </div>
 

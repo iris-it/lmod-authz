@@ -47,7 +47,7 @@
                 </tbody>
             </table>
 
-            {!! $roles->links('vendor.pagination.uikit')  !!}
+            {!! $roles->links('authz::partials.pagination')  !!}
 
         </div>
 

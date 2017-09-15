@@ -2,22 +2,12 @@
 
 @section('content')
 
-    <div class="uk-margin-top">
+    <h1>{{__('Create user')}}</h1>
 
-        <div class="uk-container uk-container-small uk-position-relative">
+    {!! Form::open(['route' => 'authz.admin_store_users', 'method' => 'POST', 'class'=> 'p-t-15']) !!}
 
-            <div class="uk-h1">
-                {{__('Create user')}}
-            </div>
+    @include('authz::admin.users.forms.user')
 
-            {!! Form::open(['route' => 'authz.admin_store_users', 'method' => 'POST', 'class'=> 'uk-form-stacked']) !!}
-
-            @include('authz::admin.users.forms.user')
-
-            {!! Form::close() !!}
-
-        </div>
-
-    </div>
+    {!! Form::close() !!}
 
 @endsection

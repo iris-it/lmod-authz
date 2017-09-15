@@ -1,48 +1,48 @@
-{!! Form::open(['route' => 'authz.update_account_password', 'method' => 'PUT', 'class'=> 'uk-form-stacked']) !!}
+{!! Form::open(['url' => route('authz.update_account_password').'#password', 'method' => 'PUT', 'class'=> 'p-t-15']) !!}
 
-<div class="uk-margin">
-
-    {!! Form::label('old_password', __('Old password'), ['class' => 'uk-form-label']) !!}
-
-    <div class="uk-form-controls">
-        {!! Form::password('old_password', ['class' =>($errors->has('old_password') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
+<div>
+    <div class="form-group form-group-default {{(!$errors->has('old_password') ?: 'has-error')}}">
+        {!! Form::label('old_password', __('Old password')) !!}
+        <div class="controls">
+            {!! Form::password('old_password', ['placeholder' => __('Old password'), 'class' =>($errors->has('old_password') ? 'form-control error' : 'form-control')]) !!}
+        </div>
     </div>
-
     @if ($errors->has('old_password'))
-        <div class="uk-text-danger">{{ $errors->first('old_password') }}</div>
+        <label id="old_password-error" class="error" for="old_password">
+            {{ $errors->first('old_password') }}
+        </label>
     @endif
-
 </div>
 
-<div class="uk-margin">
-
-    {!! Form::label('new_password', __('New password'), ['class' => 'uk-form-label']) !!}
-
-    <div class="uk-form-controls">
-        {!! Form::password('new_password', ['class' =>($errors->has('new_password') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
+<div>
+    <div class="form-group form-group-default {{(!$errors->has('new_password') ?: 'has-error')}}">
+        {!! Form::label('new_password', __('New password')) !!}
+        <div class="controls">
+            {!! Form::password('new_password', ['placeholder' => __('New password'), 'class' =>($errors->has('new_password') ? 'form-control error' : 'form-control')]) !!}
+        </div>
     </div>
-
     @if ($errors->has('new_password'))
-        <div class="uk-text-danger">{{ $errors->first('new_password') }}</div>
+        <label id="new_password-error" class="error" for="new_password">
+            {{ $errors->first('new_password') }}
+        </label>
     @endif
-
 </div>
 
 
-<div class="uk-margin">
-
-    {!! Form::label('new_password_confirmation', __('Password confirmation'), ['class' => 'uk-form-label']) !!}
-
-    <div class="uk-form-controls">
-        {!! Form::password('new_password_confirmation', ['class' =>($errors->has('new_password_confirmation') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
+<div>
+    <div class="form-group form-group-default {{(!$errors->has('new_password_confirmation') ?: 'has-error')}}">
+        {!! Form::label('new_password_confirmation', __('Password confirmation')) !!}
+        <div class="controls">
+            {!! Form::password('new_password_confirmation', ['placeholder' => __('Password confirmation'), 'class' =>($errors->has('new_password_confirmation') ? 'form-control error' : 'form-control')]) !!}
+        </div>
     </div>
-
     @if ($errors->has('new_password_confirmation'))
-        <div class="uk-text-danger">{{ $errors->first('new_password_confirmation') }}</div>
+        <label id="new_password_confirmation-error" class="error" for="new_password_confirmation">
+            {{ $errors->first('new_password_confirmation') }}
+        </label>
     @endif
-
 </div>
 
-{!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary']) !!}
+{!! Form::submit(__('Submit'), ['class' => 'btn btn-primary btn-cons m-t-10']) !!}
 
 {!! Form::close() !!}

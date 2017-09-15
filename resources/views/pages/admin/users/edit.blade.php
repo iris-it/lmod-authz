@@ -2,22 +2,12 @@
 
 @section('content')
 
-    <div class="uk-margin-top">
+    <h1>{{__('Edit user')}}</h1>
 
-        <div class="uk-container uk-container-small uk-position-relative">
+    {!! Form::model($user, ['route' => ['authz.admin_update_users', $user->id], 'method' => 'PUT', 'class'=> 'p-t-15']) !!}
 
-            <div class="uk-h1">
-                {{__('Edit user')}}
-            </div>
+    @include('authz::admin.users.forms.user')
 
-            {!! Form::model($user, ['route' => ['authz.admin_update_users', $user->id], 'method' => 'PUT', 'class'=> 'uk-form-stacked']) !!}
-
-            @include('authz::admin.users.forms.user')
-
-            {!! Form::close() !!}
-
-        </div>
-
-    </div>
+    {!! Form::close() !!}
 
 @endsection
