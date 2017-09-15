@@ -12,7 +12,7 @@
 
             {!! Form::open(['route' => ['authz.admin_destroy_permissions', $permission->id], 'method' => 'DELETE', 'class'=> 'uk-form-stacked']) !!}
 
-            {{__('Are you sure to delete')}} {{__('the permission')}} {{$permission->name}}
+            {{__('Are you sure to delete')}} {{__('the permission')}} <b>{{$permission->name}}</b> ?
 
             <hr>
 

@@ -12,7 +12,7 @@
 
             {!! Form::open(['route' => ['authz.admin_destroy_roles', $role->id], 'method' => 'DELETE', 'class'=> 'uk-form-stacked']) !!}
 
-            {{__('Are you sure to delete')}} {{__('the role')}} {{$role->name}}
+            {{__('Are you sure to delete')}} {{__('the role')}} <b>{{$role->name}}</b>
 
             <hr>
 

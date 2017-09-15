@@ -14,8 +14,6 @@
 
             @include('authz::admin.roles.forms.role')
 
-            {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary']) !!}
-
             {!! Form::close() !!}
 
         </div>

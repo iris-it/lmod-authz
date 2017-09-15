@@ -14,8 +14,6 @@
 
             @include('authz::admin.roles.forms.role')
 
-            {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary']) !!}
-
             {!! Form::close() !!}
 
             <hr>
@@ -23,8 +21,6 @@
             {!! Form::model($role, ['route' => ['authz.admin_sync_roles_permissions', $role->id], 'method' => 'PUT', 'class'=> 'uk-form-stacked']) !!}
 
             @include('authz::admin.roles.forms.permissions_sync')
-
-            {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary']) !!}
 
             {!! Form::close() !!}
 
