@@ -81,4 +81,4 @@
 
     {!! Form::close() !!}
 
-@endsections
+@endsection
