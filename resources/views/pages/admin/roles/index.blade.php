@@ -2,55 +2,56 @@
 
 @section('content')
 
-    <div class="uk-margin-top">
+    <h1>{{__('Roles')}}</h1>
 
-        <div class="uk-container uk-container-small uk-position-relative">
+    <a href="{{route('authz.admin_create_roles')}}">
+        {{__('Create role')}} <i class="fa fa-plus-circle"></i>
+    </a>
 
-            <div class="uk-h1">
-                {{__('Roles')}} <a href="{{route('authz.admin_create_roles')}}" uk-icon="icon: plus-circle"></a>
-            </div>
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <th>{{__('Id')}}</th>
+            <th>{{__('Name')}}</th>
+            <th>{{__('Label')}}</th>
+            <th>{{__('Description')}}</th>
+            <th>{{__('User count')}}</th>
+            <th>{{__('Permission count')}}</th>
+            <th>{{__('Updated')}}</th>
+            <th>{{__('Actions')}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($roles as $role)
+            <tr>
+                <td>{{$role->id}}</td>
+                <td>{{$role->name}}</td>
+                <td>{{$role->label}}</td>
+                <td>{{$role->description}}</td>
+                <td>{{$role->users->count()}}</td>
+                <td>{{$role->permissions->count()}}</td>
+                <td>{{$role->updated_at->diffForHumans()}}</td>
+                <td>
+                    <div class="btn-group">
+                        @can('permission::admin-edit_roles')
+                            <a href="{{route('authz.admin_edit_roles', $role->id)}}" class="btn btn-default">
+                                {{__('Edit role')}} <i class="fa fa-pencil"></i>
+                            </a>
+                        @endcan
+                        @can('permission::admin-destroy_roles')
+                            <a href="{{route('authz.admin_delete_roles', $role->id)}}" class="btn btn-default">
+                                {{__('Delete role')}} <i class="fa fa-trash"></i>
+                            </a>
+                        @endcan
+                    </div>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 
-            <table class="uk-table uk-table-striped">
-                <thead>
-                <tr>
-                    <th>{{__('Id')}}</th>
-                    <th>{{__('Name')}}</th>
-                    <th>{{__('Label')}}</th>
-                    <th>{{__('Description')}}</th>
-                    <th>{{__('User count')}}</th>
-                    <th>{{__('Permission count')}}</th>
-                    <th>{{__('Updated')}}</th>
-                    <th>{{__('Actions')}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($roles as $role)
-                    <tr>
-                        <td>{{$role->id}}</td>
-                        <td>{{$role->name}}</td>
-                        <td>{{$role->label}}</td>
-                        <td>{{$role->description}}</td>
-                        <td>{{$role->users->count()}}</td>
-                        <td>{{$role->permissions->count()}}</td>
-                        <td>{{$role->updated_at->diffForHumans()}}</td>
-                        <td>
-                            @can('permission::admin-edit_roles')
-                                <a href="{{route('authz.admin_edit_roles', $role->id)}}" uk-icon="icon: pencil"></a>
-                            @endcan
-
-                            @can('permission::admin-destroy_roles')
-                                <a href="{{route('authz.admin_delete_roles', $role->id)}}" uk-icon="icon: trash"></a>
-                            @endcan
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-
-            {!! $roles->links('vendor.pagination.uikit')  !!}
-
-        </div>
-
+    <div class="m-t-10">
+        {!! $roles->links('authz::partials.pagination') !!}
     </div>
 
 @endsection

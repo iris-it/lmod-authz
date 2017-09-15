@@ -2,68 +2,65 @@
 
 @section('content')
 
-    <div class="uk-margin-top">
+    <h1>{{__('Permissions')}}</h1>
 
-        <div class="uk-container uk-container-small uk-position-relative">
+    <a href="{{route('authz.admin_create_permissions')}}">
+        {{__('Create permission')}} <i class="fa fa-plus-circle"></i>
+    </a>
 
-            <div class="uk-h1">
-                {{__('Permissions')}}
+    <a class="pull-right" href="{{route('authz.admin_trigger_scan_permissions')}}" onclick="event.preventDefault(); document.getElementById('scan-perm').submit();">
+        {{__('Trigger permissions scan')}} <i class="fa fa-recycle"></i>
+        <form id="scan-perm" action="{{ route('authz.admin_trigger_scan_permissions') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
+    </a>
 
-                <a href="{{route('authz.admin_create_permissions')}}">
-                    <span uk-icon="icon: plus-circle"></span>
-                </a>
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <th>{{__('Id')}}</th>
+            <th>{{__('Name')}}</th>
+            <th>{{__('Label')}}</th>
+            <th>{{__('Description')}}</th>
+            <th>{{__('Role')}}</th>
+            <th>{{__('Updated')}}</th>
+            <th>{{__('Actions')}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($permissions as $permission)
+            <tr>
+                <td>{{$permission->id}}</td>
+                <td>{{$permission->name}}</td>
+                <td>{{$permission->label}}</td>
+                <td>{{$permission->description}}</td>
+                <td>
+                    @foreach($permission->roles as $role)
+                        @include('authz::partials.roles_pills', ['role' => $role])
+                    @endforeach
+                </td>
+                <td>{{$permission->updated_at->diffForHumans()}}</td>
+                <td>
+                    <div class="btn-group">
+                        @can('permission::admin-edit_permissions')
+                            <a href="{{route('authz.admin_edit_permissions', $permission->id)}}" class="btn btn-default">
+                                {{__('Edit permission')}} <i class="fa fa-pencil"></i>
+                            </a>
+                        @endcan
+                        @can('permission::admin-destroy_users')
+                            <a href="{{route('authz.admin_delete_permissions', $permission->id)}}" class="btn btn-default">
+                                {{__('Delete permission')}} <i class="fa fa-trash"></i>
+                            </a>
+                        @endcan
+                    </div>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 
-                <a href="{{route('authz.admin_trigger_scan_permissions')}}" onclick="event.preventDefault(); document.getElementById('scan-perm').submit();">
-                    <span uk-icon="icon: refresh"></span>
-                    <form id="scan-perm" action="{{ route('authz.admin_trigger_scan_permissions') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </a>
-            </div>
-
-            <table class="uk-table uk-table-striped">
-                <thead>
-                <tr>
-                    <th>{{__('Id')}}</th>
-                    <th>{{__('Name')}}</th>
-                    <th>{{__('Label')}}</th>
-                    <th>{{__('Description')}}</th>
-                    <th>{{__('Role')}}</th>
-                    <th>{{__('Updated')}}</th>
-                    <th>{{__('Actions')}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($permissions as $permission)
-                    <tr>
-                        <td>{{$permission->id}}</td>
-                        <td>{{$permission->name}}</td>
-                        <td>{{$permission->label}}</td>
-                        <td>{{$permission->description}}</td>
-                        <td>
-                            @foreach($permission->roles as $role)
-                                @include('authz::partials.roles_pills', ['role' => $role])
-                            @endforeach
-                        </td>
-                        <td>{{$permission->updated_at->diffForHumans()}}</td>
-                        <td>
-                            @can('permission::admin-edit_permissions')
-                                <a href="{{route('authz.admin_edit_permissions', $permission->id)}}" uk-icon="icon: pencil"></a>
-                            @endcan
-
-                            @can('permission::admin-destroy_permissions')
-                                <a href="{{route('authz.admin_delete_permissions', $permission->id)}}" uk-icon="icon: trash"></a>
-                            @endcan
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-
-            {!! $permissions->links('vendor.pagination.uikit')  !!}
-
-        </div>
-
+    <div class="m-t-10">
+        {!! $permissions->links('authz::partials.pagination') !!}
     </div>
 
 @endsection

@@ -1,41 +1,52 @@
-<div class="uk-margin">
-
-    {!! Form::label('name', __('Name'), ['class' => 'uk-form-label']) !!}
-
-    <div class="uk-form-controls">
-        {!! Form::text('name', null, ['class' =>($errors->has('name') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
+<div>
+    <div class="form-group form-group-default {{(!$errors->has('name') ?: 'has-error')}}">
+        {!! Form::label('name', __('Name')) !!}
+        <div class="controls">
+            {!! Form::text('name', null, ['placeholder' => __('Name'), 'class' =>($errors->has('name') ? 'form-control error' : 'form-control')]) !!}
+        </div>
     </div>
-
     @if ($errors->has('name'))
-        <div class="uk-text-danger">{{ $errors->first('name') }}</div>
+        <label id="name-error" class="error" for="name">
+            {{ $errors->first('name') }}
+        </label>
     @endif
-
 </div>
 
-<div class="uk-margin">
-
-    {!! Form::label('label', __('Label'), ['class' => 'uk-form-label']) !!}
-
-    <div class="uk-form-controls">
-        {!! Form::text('label', null, ['class' =>($errors->has('label') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
+<div>
+    <div class="form-group form-group-default {{(!$errors->has('label') ?: 'has-error')}}">
+        {!! Form::label('label', __('Label')) !!}
+        <div class="controls">
+            {!! Form::text('label', null, ['placeholder' => __('Label'), 'class' =>($errors->has('label') ? 'form-control error' : 'form-control')]) !!}
+        </div>
     </div>
-
     @if ($errors->has('label'))
-        <div class="uk-text-danger">{{ $errors->first('label') }}</div>
+        <label id="label-error" class="error" for="label">
+            {{ $errors->first('label') }}
+        </label>
     @endif
-
 </div>
 
-<div class="uk-margin">
-
-    {!! Form::label('description', __('Description'), ['class' => 'uk-form-label']) !!}
-
-    <div class="uk-form-controls">
-        {!! Form::text('description', null, ['class' =>($errors->has('description') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
+<div>
+    <div class="form-group form-group-default {{(!$errors->has('description') ?: 'has-error')}}">
+        {!! Form::label('description', __('Description')) !!}
+        <div class="controls">
+            {!! Form::text('description', null, ['placeholder' => __('Description'), 'class' =>($errors->has('description') ? 'form-control error' : 'form-control')]) !!}
+        </div>
     </div>
-
     @if ($errors->has('description'))
-        <div class="uk-text-danger">{{ $errors->first('description') }}</div>
+        <label id="description-error" class="error" for="description">
+            {{ $errors->first('description') }}
+        </label>
     @endif
+</div>
 
+<div class="row m-t-15">
+    <div class="col-md-6">
+        <a href="{{route('authz.admin_index_permissions')}}" class="btn btn-primary btn-cons pull-left">
+            {{__('Go back')}}
+        </a>
+    </div>
+    <div class="col-md-6">
+        {!! Form::submit(__('Submit'), ['class' => 'btn btn-primary btn-cons pull-right']) !!}
+    </div>
 </div>

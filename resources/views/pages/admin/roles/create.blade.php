@@ -2,24 +2,12 @@
 
 @section('content')
 
-    <div class="uk-margin-top">
+    <h1>{{__('Create role')}}</h1>
 
-        <div class="uk-container uk-container-small uk-position-relative">
+    {!! Form::open(['route' => 'authz.admin_store_roles', 'method' => 'POST', 'class'=> 'p-t-15']) !!}
 
-            <div class="uk-h1">
-                {{__('Create role')}}
-            </div>
+    @include('authz::admin.roles.forms.role')
 
-            {!! Form::open(['route' => 'authz.admin_store_roles', 'method' => 'POST', 'class'=> 'uk-form-stacked']) !!}
-
-            @include('authz::admin.roles.forms.role')
-
-            {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary']) !!}
-
-            {!! Form::close() !!}
-
-        </div>
-
-    </div>
+    {!! Form::close() !!}
 
 @endsection

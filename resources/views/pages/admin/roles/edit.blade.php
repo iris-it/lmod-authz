@@ -2,34 +2,23 @@
 
 @section('content')
 
-    <div class="uk-margin-top">
+    <h1>{{__('Edit role')}}</h1>
 
-        <div class="uk-container uk-container-small uk-position-relative">
+    {!! Form::model($role, ['route' => ['authz.admin_update_roles', $role->id], 'method' => 'PUT', 'class'=> 'p-t-15']) !!}
 
-            <div class="uk-h1">
-                {{__('Edit role')}}
-            </div>
+    @include('authz::admin.roles.forms.role')
 
-            {!! Form::model($role, ['route' => ['authz.admin_update_roles', $role->id], 'method' => 'PUT', 'class'=> 'uk-form-stacked']) !!}
+    {!! Form::close() !!}
 
-            @include('authz::admin.roles.forms.role')
+    <hr>
 
-            {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary']) !!}
 
-            {!! Form::close() !!}
+    <h1>{{__('Edit role permissions')}}</h1>
 
-            <hr>
+    {!! Form::model($role, ['route' => ['authz.admin_sync_roles_permissions', $role->id], 'method' => 'PUT', 'class'=> 'p-t-15']) !!}
 
-            {!! Form::model($role, ['route' => ['authz.admin_sync_roles_permissions', $role->id], 'method' => 'PUT', 'class'=> 'uk-form-stacked']) !!}
+    @include('authz::admin.roles.forms.permissions_sync')
 
-            @include('authz::admin.roles.forms.permissions_sync')
-
-            {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary']) !!}
-
-            {!! Form::close() !!}
-
-        </div>
-
-    </div>
+    {!! Form::close() !!}
 
 @endsection

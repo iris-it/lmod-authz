@@ -2,24 +2,12 @@
 
 @section('content')
 
-    <div class="uk-margin-top">
+    <h1>{{__('Create permission')}}</h1>
 
-        <div class="uk-container uk-container-small uk-position-relative">
+    {!! Form::open(['route' => 'authz.admin_store_permissions', 'method' => 'POST', 'class'=> 'p-t-15']) !!}
 
-            <div class="uk-h1">
-                {{__('Create permission')}}
-            </div>
+    @include('authz::admin.permissions.forms.permission')
 
-            {!! Form::open(['route' => 'authz.admin_store_permissions', 'method' => 'POST', 'class'=> 'uk-form-stacked']) !!}
-
-            @include('authz::admin.permissions.forms.permission')
-
-            {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary']) !!}
-
-            {!! Form::close() !!}
-
-        </div>
-
-    </div>
+    {!! Form::close() !!}
 
 @endsection
