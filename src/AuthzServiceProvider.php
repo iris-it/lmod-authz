@@ -24,9 +24,9 @@ class AuthzServiceProvider extends ServiceProvider
         /*
          * Package Loading Stuff
          */
-        $this->publishes([__DIR__ . '/../config/authz.php' => config_path('irisit_authz.php')], 'config');
+        $this->publishes([__DIR__ . '/../config/authz.php' => config_path('irisit_authz.php')], 'irisit-authz-config');
 
-        $this->publishes([__DIR__ . '/../database/seeds/RoleTableSeeder.php' => database_path('seeds/RoleTableSeeder.php')], 'seeder');
+        $this->publishes([__DIR__ . '/../database/seeds/RoleTableSeeder.php' => database_path('seeds/RoleTableSeeder.php')], 'irisit-authz-seeder');
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
