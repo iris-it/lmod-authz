@@ -11,14 +11,3 @@
         </label>
     @endif
 </div>
-
-<div class="row m-t-15">
-    <div class="col-md-6">
-        <a href="{{route('authz.admin_index_roles')}}" class="btn btn-primary btn-cons pull-left">
-            {{__('Go back')}}
-        </a>
-    </div>
-    <div class="col-md-6">
-        {!! Form::submit(__('Submit'), ['class' => 'btn btn-primary btn-cons pull-right']) !!}
-    </div>
-</div>

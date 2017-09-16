@@ -4,9 +4,11 @@
 
     <h1>{{__('Users')}}</h1>
 
-    <a href="{{route('authz.admin_create_users')}}">
-        {{__('Create user')}} <i class="fa fa-plus-circle"></i>
-    </a>
+    @can('permission::admin-create_users')
+        <a href="{{route('authz.admin_create_users')}}">
+            {{__('Create user')}} <i class="fa fa-plus-circle"></i>
+        </a>
+    @endcan
 
     <table class="table table-responsive">
         <thead>

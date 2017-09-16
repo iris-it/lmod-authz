@@ -18,7 +18,9 @@
 
             <a href="{{route('authz.admin_index_users')}}" class="uk-button uk-button-primary">{{__('Go back')}}</a>
 
-            {!! Form::submit(__('Delete user'), ['class' => 'uk-button uk-button-primary uk-align-right']) !!}
+            @can('permission::admin-destroy_users')
+                {!! Form::submit(__('Delete user'), ['class' => 'uk-button uk-button-primary uk-align-right']) !!}
+            @endcan
 
             {!! Form::close() !!}
 

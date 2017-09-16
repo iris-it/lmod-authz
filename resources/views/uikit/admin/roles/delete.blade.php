@@ -18,7 +18,9 @@
 
             <a href="{{route('authz.admin_index_roles')}}" class="uk-button uk-button-primary">{{__('Go back')}}</a>
 
-            {!! Form::submit(__('Delete role'), ['class' => 'uk-button uk-button-primary uk-align-right']) !!}
+            @can('permission::admin-destroy_roles')
+                {!! Form::submit(__('Delete role'), ['class' => 'uk-button uk-button-primary uk-align-right']) !!}
+            @endcan
 
             {!! Form::close() !!}
 

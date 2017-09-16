@@ -7,7 +7,12 @@
         <div class="uk-container uk-container-small uk-position-relative">
 
             <div class="uk-h1">
-                {{__('Roles')}} <a href="{{route('authz.admin_create_roles')}}" uk-icon="icon: plus-circle"></a>
+                {{__('Roles')}}
+
+                @can('permission::admin-create_roles')
+                    <a href="{{route('authz.admin_create_roles')}}" uk-icon="icon: plus-circle"></a>
+                @endcan
+
             </div>
 
             <table class="uk-table uk-table-striped">

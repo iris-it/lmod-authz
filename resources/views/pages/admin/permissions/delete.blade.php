@@ -12,7 +12,9 @@
 
     <a href="{{route('authz.admin_index_permissions')}}" class="btn btn-primary btn-cons pull-left">{{__('Go back')}}</a>
 
-    {!! Form::submit(__('Delete permission'), ['class' => 'btn btn-danger btn-cons pull-right']) !!}
+    @can('permission::admin-destroy_permissions')
+        {!! Form::submit(__('Delete permission'), ['class' => 'btn btn-danger btn-cons pull-right']) !!}
+    @endcan
 
     {!! Form::close() !!}
 

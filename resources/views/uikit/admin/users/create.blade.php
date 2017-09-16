@@ -14,6 +14,10 @@
 
             @include('authz::admin.users.forms.user')
 
+            @can('permission::admin-create_users')
+                {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary uk-align-right']) !!}
+            @endcan
+
             {!! Form::close() !!}
 
         </div>

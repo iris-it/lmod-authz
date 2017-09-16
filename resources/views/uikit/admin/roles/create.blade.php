@@ -14,6 +14,12 @@
 
             @include('authz::admin.roles.forms.role')
 
+            <a href="{{route('authz.admin_index_roles')}}" class="uk-button uk-button-primary">{{__('Go back')}}</a>
+
+            @can('permission::admin-create_roles')
+                {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary uk-align-right']) !!}
+            @endcan
+
             {!! Form::close() !!}
 
         </div>

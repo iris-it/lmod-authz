@@ -14,6 +14,12 @@
 
             @include('authz::admin.users.forms.user')
 
+            <a href="{{route('authz.admin_index_users')}}" class="uk-button uk-button-primary">{{__('Go back')}}</a>
+
+            @can('permission::admin-edit_users')
+                {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary uk-align-right']) !!}
+            @endcan
+            
             {!! Form::close() !!}
 
         </div>

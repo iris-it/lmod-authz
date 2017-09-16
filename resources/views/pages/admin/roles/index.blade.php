@@ -4,9 +4,11 @@
 
     <h1>{{__('Roles')}}</h1>
 
-    <a href="{{route('authz.admin_create_roles')}}">
-        {{__('Create role')}} <i class="fa fa-plus-circle"></i>
-    </a>
+    @can('permission::admin-create_roles')
+        <a href="{{route('authz.admin_create_roles')}}">
+            {{__('Create role')}} <i class="fa fa-plus-circle"></i>
+        </a>
+    @endcan
 
     <table class="table table-responsive">
         <thead>

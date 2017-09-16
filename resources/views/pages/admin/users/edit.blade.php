@@ -8,6 +8,19 @@
 
     @include('authz::admin.users.forms.user')
 
+    <div class="row m-t-15">
+        <div class="col-md-6">
+            <a href="{{route('authz.admin_index_users')}}" class="btn btn-primary btn-cons pull-left">
+                {{__('Go back')}}
+            </a>
+        </div>
+        @can('permission::admin-edit_users')
+            <div class="col-md-6">
+                {!! Form::submit(__('Submit'), ['class' => 'btn btn-primary btn-cons pull-right']) !!}
+            </div>
+        @endcan
+    </div>
+
     {!! Form::close() !!}
 
 @endsection

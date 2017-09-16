@@ -4,9 +4,11 @@
 
     <h1>{{__('Permissions')}}</h1>
 
-    <a href="{{route('authz.admin_create_permissions')}}">
-        {{__('Create permission')}} <i class="fa fa-plus-circle"></i>
-    </a>
+    @can('permission::admin-create_permissions')
+        <a href="{{route('authz.admin_create_permissions')}}">
+            {{__('Create permission')}} <i class="fa fa-plus-circle"></i>
+        </a>
+    @endcan
 
     <a class="pull-right" href="{{route('authz.admin_trigger_scan_permissions')}}" onclick="event.preventDefault(); document.getElementById('scan-perm').submit();">
         {{__('Trigger permissions scan')}} <i class="fa fa-recycle"></i>
@@ -47,7 +49,7 @@
                                 {{__('Edit permission')}} <i class="fa fa-pencil"></i>
                             </a>
                         @endcan
-                        @can('permission::admin-destroy_users')
+                        @can('permission::admin-destroy_permissions')
                             <a href="{{route('authz.admin_delete_permissions', $permission->id)}}" class="btn btn-default">
                                 {{__('Delete permission')}} <i class="fa fa-trash"></i>
                             </a>

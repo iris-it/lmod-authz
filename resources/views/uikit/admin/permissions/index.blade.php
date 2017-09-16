@@ -9,16 +9,21 @@
             <div class="uk-h1">
                 {{__('Permissions')}}
 
-                <a href="{{route('authz.admin_create_permissions')}}">
-                    <span uk-icon="icon: plus-circle"></span>
-                </a>
+                @can('permission::admin-create_permissions')
+                    <a href="{{route('authz.admin_create_permissions')}}">
+                        <span uk-icon="icon: plus-circle"></span>
+                    </a>
+                @endcan
 
-                <a href="{{route('authz.admin_trigger_scan_permissions')}}" onclick="event.preventDefault(); document.getElementById('scan-perm').submit();">
-                    <span uk-icon="icon: refresh"></span>
-                    <form id="scan-perm" action="{{ route('authz.admin_trigger_scan_permissions') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </a>
+                @can('permission::admin-trigger_scan_permissions')
+                    <a href="{{route('authz.admin_trigger_scan_permissions')}}" onclick="event.preventDefault(); document.getElementById('scan-perm').submit();">
+                        <span uk-icon="icon: refresh"></span>
+                        <form id="scan-perm" action="{{ route('authz.admin_trigger_scan_permissions') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </a>
+                @endcan
+
             </div>
 
             <table class="uk-table uk-table-striped">

@@ -7,7 +7,12 @@
         <div class="uk-container uk-container-small uk-position-relative">
 
             <div class="uk-h1">
-                {{__('Users')}} <a href="{{route('authz.admin_create_users')}}" uk-icon="icon: plus-circle"></a>
+                {{__('Users')}}
+
+                @can('permission::admin-create_users')
+                    <a href="{{route('authz.admin_create_users')}}" uk-icon="icon: plus-circle"></a>
+                @endcan
+
             </div>
 
             <table class="uk-table uk-table-striped">
