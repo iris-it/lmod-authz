@@ -33,7 +33,7 @@ Route::group(['namespace' => 'Irisit\Authz\Http\Controllers', 'middleware' => 'w
 
     });
 
-    Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
+    Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'role:admin,manager']], function () {
 
         Route::group(['prefix' => 'users'], function () {
 

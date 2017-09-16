@@ -111,6 +111,12 @@ by
 
 `'guest' => \Irisit\Authz\Http\Middleware\RedirectIfAuthenticated::class,`
 
+And add at the end ( after guest )
+ 
+`'role' => \Irisit\Authz\Http\Middleware\RedirectIfNotRole::class,`
+
+so you can use the middleware 'role' to protect a route or a group like this `middleware => 'role:admin,manager'`
+
 
 Run 
 
