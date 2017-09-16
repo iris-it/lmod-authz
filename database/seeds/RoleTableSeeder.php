@@ -1,7 +1,5 @@
 <?php
 
-namespace Irisit\Authz\Database\Seeds;
-
 use Irisit\Authz\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

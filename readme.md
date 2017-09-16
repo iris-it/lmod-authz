@@ -142,4 +142,6 @@ protected function unauthenticated($request, AuthenticationException $exception)
 ```
 
 
-And run `php artisan vendor:publish --provider="Irisit\Authz\AuthzServiceProvider"` to get the configuration file
+And run `php artisan vendor:publish --provider="Irisit\Authz\AuthzServiceProvider"` to get the configuration file and the seeder file 
+
+For the seeder add `$this->call(RoleTableSeeder::class);` to the `/database/seeders/DatabaseSeeder.php`
