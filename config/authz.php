@@ -37,4 +37,15 @@ return [
 
     'base_theme' => 'uikit',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Allowed roles for admin section
+    |--------------------------------------------------------------------------
+    |
+    | Roles for admin section, separated by commas
+    |
+    */
+
+    'admin_allowed_roles' => 'admin,manager',
+
 ];
