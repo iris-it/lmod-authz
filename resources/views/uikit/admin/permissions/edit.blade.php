@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="uk-margin-top">
+    <div class="uk-margin-top uk-margin-bottom">
 
         <div class="uk-container uk-container-small uk-position-relative">
 

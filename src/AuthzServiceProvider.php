@@ -32,7 +32,9 @@ class AuthzServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views/' . config('irisit_authz.base_theme'), 'authz');
 
-        $this->loadRoutesFrom(__DIR__ . '/routes.php');
+        if (config('irisit_authz.load_routes')) {
+            $this->loadRoutesFrom(__DIR__ . '/routes.php');
+        }
     }
 
     /**
