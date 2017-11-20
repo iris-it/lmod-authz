@@ -48,4 +48,20 @@ return [
 
     'admin_allowed_roles' => 'admin,manager',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Enable / Disable feature
+    |--------------------------------------------------------------------------
+    |
+    | Enable or disable features like register or profile
+    |
+    */
+
+    'feature_register_enabled' => true,
+    'feature_reset_enabled' => true,
+    'feature_profile_enabled' => true,
+    'feature_admin_users_enabled' => true,
+    'feature_admin_roles_enabled' => true,
+    'feature_admin_permissions_enabled' => true,
+
 ];

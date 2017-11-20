@@ -42,9 +42,11 @@
                 <label for="checkbox1">{{ __('Remember me ?') }}</label>
             </div>
         </div>
-        <div class="col-md-6 d-flex align-items-center justify-content-end">
-            <a href="{{route('authz.get_forgot_password')}}" class="text-info small">{{ __('Forgot password ?') }}</a>
-        </div>
+        @if(config('irisit_authz.feature_reset_enabled', true))
+            <div class="col-md-6 d-flex align-items-center justify-content-end">
+                <a href="{{route('authz.get_forgot_password')}}" class="text-info small">{{ __('Forgot password ?') }}</a>
+            </div>
+        @endif
     </div>
 
     {!! Form::submit(__('Submit'), ['class' => 'btn btn-primary btn-cons m-t-10', 'name' => 'submit-login']) !!}

@@ -50,7 +50,9 @@
 
             {!! Form::submit(__('Submit'), ['class' => 'uk-button uk-button-primary', 'name' => 'submit-login']) !!}
 
-            <a class="uk-align-right@m" href="{{route('authz.get_forgot_password')}}">{{ __('Forgot password ?') }}</a>
+            @if(config('irisit_authz.feature_reset_enabled', true))
+                <a class="uk-align-right@m" href="{{route('authz.get_forgot_password')}}">{{ __('Forgot password ?') }}</a>
+            @endif
 
             {!! Form::close() !!}
 
