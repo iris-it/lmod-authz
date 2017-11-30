@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'redirect_path' => 'authz.edit_account',
+    'redirect_path' => 'home',
 
     /*
     |--------------------------------------------------------------------------
