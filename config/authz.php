@@ -71,8 +71,5 @@ return [
     'feature_register_enabled' => true,
     'feature_reset_enabled' => true,
     'feature_profile_enabled' => true,
-    'feature_admin_users_enabled' => true,
-    'feature_admin_roles_enabled' => true,
-    'feature_admin_permissions_enabled' => true,
 
 ];
