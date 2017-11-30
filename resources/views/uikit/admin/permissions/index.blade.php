@@ -16,7 +16,7 @@
                 @endcan
 
                 @can('permission::admin-trigger_scan_permissions')
-                    <a href="{{route('authz.admin_trigger_scan_permissions')}}" onclick="event.preventDefault(); document.getElementById('scan-perm').submit();">
+                    <a href="{{route('authz.admin_trigger_scan_permissions')}}" title="Scan permissions" onclick="event.preventDefault(); document.getElementById('scan-perm').submit();">
                         <span uk-icon="icon: refresh"></span>
                         <form id="scan-perm" action="{{ route('authz.admin_trigger_scan_permissions') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
