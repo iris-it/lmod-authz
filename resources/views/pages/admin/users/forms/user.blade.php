@@ -40,13 +40,13 @@
     @endif
 </div>
 
-@if(config('irisit_authz.admin_generate_and_send_password', true) === true)
+@if(config('irisit_authz.admin_generate_and_send_password', true) === false)
 
     <div>
         <div class="form-group form-group-default {{(!$errors->has('password') ?: 'has-error')}}">
             {!! Form::label('password', __('Password')) !!}
             <div class="controls">
-                {!! Form::password('password', null, ['class' =>($errors->has('password') ? 'form-control error' : 'form-control')]) !!}
+                {!! Form::password('password', ['class' =>($errors->has('password') ? 'form-control error' : 'form-control')]) !!}
             </div>
         </div>
         @if ($errors->has('password'))
@@ -60,7 +60,7 @@
         <div class="form-group form-group-default {{(!$errors->has('password_confirmation') ?: 'has-error')}}">
             {!! Form::label('password_confirmation', __('Password confirmation')) !!}
             <div class="controls">
-                {!! Form::password('password_confirmation', null, ['class' =>($errors->has('password_confirmation') ? 'form-control error' : 'form-control')]) !!}
+                {!! Form::password('password_confirmation', ['class' =>($errors->has('password_confirmation') ? 'form-control error' : 'form-control')]) !!}
             </div>
         </div>
         @if ($errors->has('password_confirmation'))
