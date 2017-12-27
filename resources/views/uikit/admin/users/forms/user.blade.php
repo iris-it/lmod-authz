@@ -40,6 +40,38 @@
 
 </div>
 
+@if(config('irisit_authz.admin_generate_and_send_password', true) === true)
+
+    <div class="uk-margin">
+
+        {!! Form::label('password', __('Password'), ['class' => 'uk-form-label']) !!}
+
+        <div class="uk-form-controls">
+            {!! Form::password('password', null, ['class' => ($errors->has('password') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
+        </div>
+
+        @if ($errors->has('password'))
+            <div class="uk-text-danger">{{ $errors->first('password') }}</div>
+        @endif
+
+    </div>
+
+    <div class="uk-margin">
+
+        {!! Form::label('password_confirmation', __('Password confirmation'), ['class' => 'uk-form-label']) !!}
+
+        <div class="uk-form-controls">
+            {!! Form::password('password_confirmation', null, ['class' => ($errors->has('password_confirmation') ? 'uk-input uk-form-danger' : 'uk-input')]) !!}
+        </div>
+
+        @if ($errors->has('password_confirmation'))
+            <div class="uk-text-danger">{{ $errors->first('password_confirmation') }}</div>
+        @endif
+
+    </div>
+
+@endif
+
 <div class="uk-margin">
 
     {!! Form::label('role', __('Role'), ['class' => 'uk-form-label']) !!}
@@ -53,3 +85,5 @@
     @endif
 
 </div>
+
+

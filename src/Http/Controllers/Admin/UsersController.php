@@ -32,13 +32,22 @@ class UsersController extends Controller
     {
         $data = $request->all();
 
-        $password = $passwordGenService->generate();
+        $password = null;
 
-        $data['password'] = bcrypt($password);
+        if (config('irisit_authz.admin_generate_and_send_password', true) === true) {
+            $password = $passwordGenService->generate();
+        } else {
+            $password = $data['password'];
+        }
+
+        $data['password'] = bcrypt($data['password']);
+
 
         if ($user = User::create($data)) {
 
-            $user->notify(new NewAccount($user, $password));
+            if (config('irisit_authz.admin_generate_and_send_password', true) === true) {
+                $user->notify(new NewAccount($user, $password));
+            }
 
             Flash::success(__('User create success'));
         } else {

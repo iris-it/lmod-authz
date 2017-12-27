@@ -72,4 +72,15 @@ return [
     'feature_reset_enabled' => true,
     'feature_profile_enabled' => true,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Admin
+    |--------------------------------------------------------------------------
+    |
+    | Enable or disable features like register or profile
+    |
+    */
+
+    'admin_generate_and_send_password' => true,
+
 ];

@@ -29,6 +29,10 @@ class AdminUserRequest extends FormRequest
             'role_id' => 'required|integer',
         ];
 
+        if (config('irisit_authz.admin_generate_and_send_password', true) === false) {
+            $rules['password'] = 'required|string|min:6|confirmed';
+        }
+
         return $rules;
     }
 }

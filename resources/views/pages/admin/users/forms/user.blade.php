@@ -40,6 +40,38 @@
     @endif
 </div>
 
+@if(config('irisit_authz.admin_generate_and_send_password', true) === true)
+
+    <div>
+        <div class="form-group form-group-default {{(!$errors->has('password') ?: 'has-error')}}">
+            {!! Form::label('password', __('Password')) !!}
+            <div class="controls">
+                {!! Form::password('password', null, ['class' =>($errors->has('password') ? 'form-control error' : 'form-control')]) !!}
+            </div>
+        </div>
+        @if ($errors->has('password'))
+            <label id="password-error" class="error" for="password">
+                {{ $errors->first('password') }}
+            </label>
+        @endif
+    </div>
+
+    <div>
+        <div class="form-group form-group-default {{(!$errors->has('password_confirmation') ?: 'has-error')}}">
+            {!! Form::label('password_confirmation', __('Password confirmation')) !!}
+            <div class="controls">
+                {!! Form::password('password_confirmation', null, ['class' =>($errors->has('password_confirmation') ? 'form-control error' : 'form-control')]) !!}
+            </div>
+        </div>
+        @if ($errors->has('password_confirmation'))
+            <label id="password-error" class="error" for="password_confirmation">
+                {{ $errors->first('password_confirmation') }}
+            </label>
+        @endif
+    </div>
+
+@endif
+
 <div>
     <div class="form-group form-group-default {{(!$errors->has('role_id') ?: 'has-error')}}">
         {!! Form::label('role_id', __('Role')) !!}
@@ -53,3 +85,4 @@
         </label>
     @endif
 </div>
+
