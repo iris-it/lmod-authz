@@ -72,6 +72,10 @@ class UsersController extends Controller
 
         $data = $request->all();
 
+        if($data['password'] == ""){
+            unset($data['password']);
+        }
+
         if ($user->update($data)) {
             Flash::success(__('Update user success'));
         } else {
