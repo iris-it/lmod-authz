@@ -43,7 +43,7 @@
 
             <div class="uk-margin">
                 <label>
-                    {!! Form::checkbox('remember', null, null, ['class' => 'uk-checkbox']) !!}
+                    {!! Form::checkbox('remember', 1, null, ['class' => 'uk-checkbox']) !!}
                     {{ __('Remember me ?') }}
                 </label>
             </div>

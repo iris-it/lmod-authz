@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-md-6 no-padding sm-p-l-10">
             <div class="checkbox">
-                {!! Form::checkbox('remember', null, null) !!}
+                {!! Form::checkbox('remember', 1, null) !!}
                 <label for="checkbox1">{{ __('Remember me ?') }}</label>
             </div>
         </div>

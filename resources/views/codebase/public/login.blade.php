@@ -33,7 +33,7 @@
     <div class="form-group row">
         <div class="col-12">
             <label class="custom-control custom-checkbox">
-                {!! Form::checkbox('remember', null, null, ['class' => 'custom-control-input']) !!}
+                {!! Form::checkbox('remember', 1, null, ['class' => 'custom-control-input']) !!}
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">{{ __('Remember me ?') }}</span>
             </label>
