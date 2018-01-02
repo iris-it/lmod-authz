@@ -10,7 +10,7 @@
                 {{__('Delete user')}}
             </div>
 
-            {!! Form::model($user, ['route' => ['authz.admin_destroy_users', $user->id], 'method' => 'DELETE', 'class'=> 'uk-form-stacked']) !!}
+            {!! Form::open(['route' => ['authz.admin_destroy_users', $user->id], 'method' => 'DELETE', 'class'=> 'uk-form-stacked']) !!}
 
             {{__('Are you sure to delete')}} {{$user->firstname}} {{$user->lastname}}
 

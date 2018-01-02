@@ -4,7 +4,7 @@
 
     <h1>{{__('Delete user')}}</h1>
 
-    {!! Form::model($user, ['route' => ['authz.admin_destroy_users', $user->id], 'method' => 'DELETE', 'class'=> 'p-t-15']) !!}
+    {!! Form::open(['route' => ['authz.admin_destroy_users', $user->id], 'method' => 'DELETE', 'class'=> 'p-t-15']) !!}
 
     {{__('Are you sure to delete')}} <b>{{$user->firstname}} {{$user->lastname}}</b> ?
 
