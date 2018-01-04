@@ -72,8 +72,10 @@ class UsersController extends Controller
 
         $data = $request->all();
 
-        if($data['password'] == ""){
+        if ($data['password'] == "") {
             unset($data['password']);
+        } else {
+            $data['password'] = bcrypt($data['password']);
         }
 
         if ($user->update($data)) {
